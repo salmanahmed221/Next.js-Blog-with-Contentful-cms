@@ -13,7 +13,6 @@ async function getBlogs() {
 
 export default async function Page() {
   const blogs = await getBlogs();
-  
   return (
     <div className="bg-gray-600 grid md:grid-cols-4 py-4 gap-y-4">
       {blogs.items.map((elem1: any) => (
@@ -25,17 +24,14 @@ export default async function Page() {
 
           {blogs.includes.Asset.map((elem2: any) => (
             <div key={elem2.sys.id}>
-              {elem1.fields.image.sys.id == elem2.sys.id ? (
+              {elem1.fields.image.sys.id == elem2.sys.id ?
                 <Image
                   src={'https:' + elem2.fields.file.url}
                   alt=""
                   width={400}
                   height={400}
                   className="mt-2 w-[300px] h-[200px]"
-                />
-              ) : (
-                <div></div>
-              )}
+                /> : <div></div>}
             </div>
           ))}
         </div>

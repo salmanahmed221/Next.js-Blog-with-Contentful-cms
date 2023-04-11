@@ -24,14 +24,23 @@ export default async function Page() {
 
           {blogs.includes.Asset.map((elem2: any) => (
             <div key={elem2.sys.id}>
-              {elem1.fields.image.sys.id == elem2.sys.id ?
+              {elem1.fields.image.sys.id == elem2.sys.id ? (
                 <Image
                   src={'https:' + elem2.fields.file.url}
                   alt=""
                   width={400}
                   height={400}
                   className="mt-2 w-[300px] h-[200px]"
-                /> : <div></div>}
+                />
+              ) : (
+                <div></div>
+              )}
+            </div>
+          ))}
+          {blogs.includes.Entry.map((elem3: any) => (
+            <div className='mt-2' key={elem3.sys.id}>
+              {elem1.fields.author.sys.id == elem3.sys.id ?
+                <h1 className='font-bold'>Author : {elem3.fields.name}</h1> : <div></div>}
             </div>
           ))}
         </div>
